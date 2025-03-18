@@ -1,11 +1,13 @@
-import Navbar from "@/components/partials/Header/Navbar"
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import LandingPage from "@/pages/LandingPage";
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <h1>Vite + React</h1>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+      </Routes>
+    </Router>
   )
 }
 

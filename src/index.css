@@ -12,6 +12,8 @@
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
+  --dark-hover-background: #AEF16A;
+  --dark-background: #1E1E1E;
   --primary: oklch(0.21 0.006 285.885);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.967 0.001 286.375);
@@ -63,6 +65,18 @@
   src: url('./assets/fonts/SpaceMono-BoldItalic.ttf');
   font-weight: 700;
   font-style: italic;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url('./assets/fonts/Outfit-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url('./assets/fonts/Outfit-Bold.ttf');
+  font-weight: 700;
 }
 
 .dark {
