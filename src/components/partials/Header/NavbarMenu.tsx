@@ -1,6 +1,6 @@
 import React, { RefObject } from "react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 interface NavbarMenuProps {
   isMenuOpen: boolean;
@@ -13,6 +13,8 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({
   toggleMenu,
   menuRef,
 }) => {
+  const navigate = useNavigate();
+
   const menuItems = [
     { name: "About us", url: "#" },
     { name: "Services", url: "#" },
@@ -31,7 +33,7 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({
               </Link>
             </li>
           ))}
-          <Button variant="outline" size="lg">
+          <Button variant="outline" size="lg" onClick={() => navigate("/analyze-resume")}>
             Analyze a resume
           </Button>
         </ul>
@@ -73,6 +75,7 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({
               </Link>
             </li>
           ))}
+          <Button variant="outline" size="lg" onClick={() => navigate("/analyze-resume")}>Analyze a resume</Button>
         </ul>
       </div>
     </>
