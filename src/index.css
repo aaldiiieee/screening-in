@@ -12,8 +12,8 @@
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --dark-hover-background: #AEF16A;
-  --dark-background: #1E1E1E;
+  --dark-hover-background: #aef16a;
+  --dark-background: #1e1e1e;
   --primary: oklch(0.21 0.006 285.885);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.967 0.001 286.375);
@@ -43,39 +43,45 @@
 
 @font-face {
   font-family: "Space Mono";
-  src: url('./assets/fonts/SpaceMono-Regular.ttf');
+  src: url("./assets/fonts/SpaceMono-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Space Mono";
-  src: url('./assets/fonts/SpaceMono-Bold.ttf');
+  src: url("./assets/fonts/SpaceMono-Bold.ttf");
   font-weight: 700;
 }
 
 @font-face {
   font-family: "Space Mono";
-  src: url('./assets/fonts/SpaceMono-Italic.ttf');
+  src: url("./assets/fonts/SpaceMono-Italic.ttf");
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Space Mono";
-  src: url('./assets/fonts/SpaceMono-BoldItalic.ttf');
+  src: url("./assets/fonts/SpaceMono-BoldItalic.ttf");
   font-weight: 700;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Outfit";
-  src: url('./assets/fonts/Outfit-Regular.ttf');
+  src: url("./assets/fonts/Outfit-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Outfit";
-  src: url('./assets/fonts/Outfit-Bold.ttf');
+  src: url("./assets/fonts/Outfit-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("./assets/fonts/Outfit-Bold.ttf");
   font-weight: 700;
 }
 
@@ -153,6 +159,13 @@
 
 body {
   font-family: "Space Mono";
+}
+
+.shadow-section {
+  --tw-shadow: #000 6px 6px 0px 0px;
+  --tw-shadow-colored: 6px 6px 0px 0px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 @layer base {
