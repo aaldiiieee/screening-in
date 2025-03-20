@@ -51,7 +51,7 @@ const LandingPage = () => {
           flexDirection="row"
         />
 
-        <div className="grid md:grid-cols-2 gap-4 mt-10">
+        <div className="grid md:grid-cols-2 gap-10 mt-10">
           <CardServices
             image={NotesImage}
             title="Reinforce Resume with One-Click"
@@ -72,7 +72,7 @@ const LandingPage = () => {
           />
           <CardServices
             image={ChatbotImage}
-            title="Lagi gw pikirin wak yang penting"
+            title="AI-Powered Cover Letter Generator"
             linkTo="#"
             variant="light"
           />

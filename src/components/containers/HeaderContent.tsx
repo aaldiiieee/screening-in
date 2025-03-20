@@ -6,7 +6,7 @@ const HeaderContent = ({ title, desc, flexDirection }: HeaderContentProps) => {
     <div
       className={clsx(
         "flex items-center gap-3 font-[Outfit]",
-        flexDirection === "row" ? "flex-row" : "flex-col"
+        flexDirection === "row" ? "md:flex-row flex-col md:text-left text-center" : "flex-col"
       )}
     >
       <div className="bg-[#AEF169] rounded-[8px] p-2">
