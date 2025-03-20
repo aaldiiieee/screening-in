@@ -8,6 +8,7 @@ import NotesImage from "@/assets/images/notes.png";
 import CoderImage from "@/assets/images/coder.png";
 import NewsLetterImage from "@/assets/images/newsletter.png";
 import ChatbotImage from "@/assets/images/chatbot.png";
+import WorkImage from "@/assets/images/work.png";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -44,14 +45,33 @@ const LandingPage = () => {
         />
       </section>
 
-      <section className="mt-20">
+      <section className="mt-28 flex md:flex-row-reverse flex-col md:gap-[92px] gap-4 md:justify-between justify-center items-center">
+        <HeaderContent
+          title="Who we are & Why we Exist"
+          desc="
+            At Screening-in, we believe that a great CV is the key to unlocking your dream career. However, many job seekers—from fresh graduates to professionals—still struggle to create an effective CV that meets recruiters’ standards.
+            We are here to help you understand what makes your resume attractive to recruiters. Using automated analysis technology, we provide scores, personalized feedback, and improvement recommendations to make your resume more competitive."
+          flexDirection="column"
+          align="left"
+        />
+
+        <img
+          src={WorkImage}
+          alt="Hero Image"
+          loading="lazy"
+          className="md:max-w-full max-w-[70%]"
+        />
+      </section>
+
+      <section className="mt-28">
         <HeaderContent
           title="Services"
           desc="At Screening-in, we help job seekers create outstanding resumes that stand out in today's competitive job market. Our services include:"
           flexDirection="row"
+          align="center"
         />
 
-        <div className="grid md:grid-cols-2 gap-10 mt-10">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-10 mt-10">
           <CardServices
             image={NotesImage}
             title="Reinforce Resume with One-Click"

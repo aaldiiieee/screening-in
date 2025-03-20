@@ -1,12 +1,13 @@
 import { HeaderContentProps } from "@/types/container";
 import clsx from "clsx";
 
-const HeaderContent = ({ title, desc, flexDirection }: HeaderContentProps) => {
+const HeaderContent = ({ title, desc, flexDirection, align = "center" }: HeaderContentProps) => {
   return (
     <div
       className={clsx(
-        "flex items-center gap-3 font-[Outfit]",
-        flexDirection === "row" ? "md:flex-row flex-col md:text-left text-center" : "flex-col"
+        "flex items-center gap-3 font-[Outfit] md:text-left text-center",
+        flexDirection === "row" ? "md:flex-row flex-col md:text-left" : "flex-col",
+        align === "left" ? "items-start" : "items-center"
       )}
     >
       <div className="bg-[#AEF169] rounded-[8px] p-2">

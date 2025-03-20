@@ -1,7 +1,8 @@
 export interface HeaderContentProps {
   title: string;
   desc: string;
-  flexDirection?: "row" | "col";
+  flexDirection?: "row" | "column";
+  align: "left" | "center";
 }
 
 export interface CardServicesProps {
