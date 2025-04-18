@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router";
 import MainLayout from "@/components/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router";
-import HeroImage from "@/assets/images/hero-image.png";
+
 import HeaderContent from "@/components/containers/HeaderContent";
 import CardServices from "@/components/containers/CardServices";
+import CardSliderReviews from "@/components/containers/CardSliderReviews";
+
+import HeroImage from "@/assets/images/hero-image.png";
 import NotesImage from "@/assets/images/notes.png";
 import CoderImage from "@/assets/images/coder.png";
 import NewsLetterImage from "@/assets/images/newsletter.png";
@@ -12,6 +15,15 @@ import WorkImage from "@/assets/images/work.png";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+
+  const cards = [
+    { title: "Card 1", content: "Content for card 1." },
+    { title: "Card 2", content: "Content for card 2." },
+    { title: "Card 3", content: "Content for card 3." },
+    { title: "Card 4", content: "Content for card 4." },
+    { title: "Card 5", content: "Content for card 5." },
+  ];
+  
 
   return (
     <MainLayout>
@@ -97,6 +109,17 @@ const LandingPage = () => {
             variant="light"
           />
         </div>
+      </section>
+
+      <section className="mt-28">
+        <HeaderContent
+          title="Reviews"
+          desc="See how Screening.in helps job seekers land their dream interviews and jobs."
+          flexDirection="column"
+          align="center"
+        />
+
+        <CardSliderReviews cards={cards} speed={30} />
       </section>
     </MainLayout>
   );

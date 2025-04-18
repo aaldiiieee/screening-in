@@ -2,9 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 import LandingPage from "@/pages/LandingPage";
 import AuthPage from "@/pages/AuthPage";
 import ProtectedRoute from "@/components/modules/ProtectedRoutes";
+import { useSession } from "./context/AuthContext";
+import { IAuthContext } from "./types/context";
 
 function App() {
-  const isAuthenticated = false;
+  const { token } = useSession() as IAuthContext;
+
+  const isAuthenticated = !!token;
 
   return (
     <Router>
