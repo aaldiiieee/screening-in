@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import HeaderContent from "@/components/containers/HeaderContent";
 import CardServices from "@/components/containers/CardServices";
 import CardSliderReviews from "@/components/containers/CardSliderReviews";
+import CardLetsConnect from "@/components/containers/CardLetsConnect";
 
 import HeroImage from "@/assets/images/hero-image.png";
 import NotesImage from "@/assets/images/notes.png";
@@ -120,6 +121,10 @@ const LandingPage = () => {
         />
 
         <CardSliderReviews cards={cards} speed={30} />
+      </section>
+
+      <section className="mt-28">
+        <CardLetsConnect />
       </section>
     </MainLayout>
   );
