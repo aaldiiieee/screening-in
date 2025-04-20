@@ -1,16 +1,16 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 import { IAuthContext } from "@/types/context";
 import { useQueryClient } from "@tanstack/react-query";
 
 const AuthContext = createContext<IAuthContext | null>(null);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null>(() => sessionStorage.getItem("USER_TOKEN"));
   const queryClient = useQueryClient();
 
   const signIn = (token: string) => {
     setToken(token);
-    sessionStorage.setItem("USER_TOKEN", JSON.stringify(token));
+    sessionStorage.setItem("USER_TOKEN", token);
   };
 
   const signOut = () => {
@@ -18,13 +18,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     sessionStorage.removeItem("USER_TOKEN");
     queryClient.clear();
   };
-
-  useEffect(() => {
-    const token = sessionStorage.getItem("USER_TOKEN");
-    if (token) {
-      setToken(JSON.parse(token));
-    }
-  }, []);
 
   return (
     <AuthContext.Provider value={{ token, signIn, signOut }}>

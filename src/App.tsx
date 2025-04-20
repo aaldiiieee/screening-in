@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import LandingPage from "@/pages/LandingPage";
 import AuthPage from "@/pages/AuthPage";
+import AnalyzeResumePage from "@/pages/AnalyzeResumePage";
 import ProtectedRoute from "@/components/modules/ProtectedRoutes";
 import { useSession } from "./context/AuthContext";
 import { IAuthContext } from "./types/context";
@@ -14,9 +15,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/authenticate" element={<AuthPage />} />
+        <Route path="authenticate" element={<AuthPage />} />
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
-          <Route path="/analyze-resume" element={<LandingPage />} />
+          <Route path="analyze-resume" element={<AnalyzeResumePage />} />
         </Route>
       </Routes>
     </Router>
