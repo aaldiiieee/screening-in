@@ -1,15 +1,35 @@
 import { useState, useEffect, useRef } from "react";
+import { useSession } from "@/context/AuthContext";
 import NavbarLogo from "./NavbarLogo";
 import NavbarMenuToggle from "./NavbarMenuToggle";
 import NavbarMenu from "./NavbarMenu";
+import NavbarDropdown from "./NavbarDropdown";
+import { IAuthContext } from "@/types/context";
+import callApiUrl from "@/lib/axiosInstance";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { token, signOut } = useSession() as IAuthContext;
   const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await callApiUrl.get("/api/v1/me");
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    if (sessionStorage.getItem("USER_TOKEN")) {
+      fetchData();
+    }
+  }, []);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -44,11 +64,15 @@ const Navbar = () => {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <NavbarLogo />
           <NavbarMenuToggle isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-          <NavbarMenu 
-            isMenuOpen={isMenuOpen} 
-            toggleMenu={toggleMenu} 
-            menuRef={menuRef} 
+          <NavbarMenu
+            isMenuOpen={isMenuOpen}
+            toggleMenu={toggleMenu}
+            menuRef={menuRef}
           />
+
+          {token && (
+            <NavbarDropdown signOut={signOut} />
+          )}
         </div>
       </nav>
     </header>

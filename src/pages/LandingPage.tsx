@@ -14,9 +14,6 @@ import NewsLetterImage from "@/assets/images/newsletter.png";
 import ChatbotImage from "@/assets/images/chatbot.png";
 import WorkImage from "@/assets/images/work.png";
 
-import callApiUrl from "@/lib/axiosInstance";
-import { useEffect } from "react";
-
 const LandingPage = () => {
   const navigate = useNavigate();
 
@@ -27,22 +24,6 @@ const LandingPage = () => {
     { title: "Card 4", content: "Content for card 4." },
     { title: "Card 5", content: "Content for card 5." },
   ];
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await callApiUrl.get("/api/v1/me");
-        console.log(response);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    if (sessionStorage.getItem("USER_TOKEN")) {
-      fetchData();
-    }
-  }, []);
-  
 
   return (
     <MainLayout>

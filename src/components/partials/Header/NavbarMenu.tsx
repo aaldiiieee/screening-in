@@ -1,6 +1,8 @@
 import React, { RefObject } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router";
+import { useSession } from "@/context/AuthContext";
+import { IAuthContext } from "@/types/context";
 
 interface NavbarMenuProps {
   isMenuOpen: boolean;
@@ -13,6 +15,7 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({
   toggleMenu,
   menuRef,
 }) => {
+  const { token } = useSession() as IAuthContext;
   const navigate = useNavigate();
 
   const menuItems = [
@@ -33,9 +36,16 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({
               </Link>
             </li>
           ))}
-          <Button variant="outline" size="lg" onClick={() => navigate("/analyze-resume")}>
-            Analyze a resume
-          </Button>
+
+          {token === null && (
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => navigate("/analyze-resume")}
+            >
+              Analyze a resume
+            </Button>
+          )}
         </ul>
       </div>
 
@@ -75,7 +85,13 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({
               </Link>
             </li>
           ))}
-          <Button variant="outline" size="lg" onClick={() => navigate("/analyze-resume")}>Analyze a resume</Button>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => navigate("/analyze-resume")}
+          >
+            Analyze a resume
+          </Button>
         </ul>
       </div>
     </>
