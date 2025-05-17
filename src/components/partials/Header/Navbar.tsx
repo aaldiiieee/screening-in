@@ -68,11 +68,12 @@ const Navbar = () => {
             isMenuOpen={isMenuOpen}
             toggleMenu={toggleMenu}
             menuRef={menuRef}
-          />
+          >
+            {token && (
+              <NavbarDropdown signOut={signOut} />
+            )}
+          </NavbarMenu>
 
-          {token && (
-            <NavbarDropdown signOut={signOut} />
-          )}
         </div>
       </nav>
     </header>

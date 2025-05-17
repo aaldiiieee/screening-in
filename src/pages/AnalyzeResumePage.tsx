@@ -166,51 +166,52 @@ const AnalyzeResumePage: React.FC = () => {
   return (
     <MainLayout>
       {resultData ? (
-        <div className="result-container p-6 bg-white rounded-lg shadow-md">
-          <div className="flex items-center gap-2 mb-6">
-            <CheckCircle2 className="text-green-500 w-6 h-6" />
-            <h3 className="text-2xl font-bold">Analysis Results</h3>
+        <>
+          <div className="flex items-center gap-2 mb-6 justify-center">
+            <CheckCircle2 className="text-green-500" size={40} />
+            <h1 className="text-4xl font-bold">Analysis Results</h1>
           </div>
+          <div className="result-container p-6 rounded-lg border border-black">
+            <div className="flex flex-col gap-4">
+              {resultData.analysis &&
+                resultData.analysis.map((item, index) => (
+                  <div
+                    key={index}
+                    className="analysis-item bg-gray-50 p-4 rounded-lg border border-gray-200"
+                  >
+                    <h4 className="font-medium text-lg mb-2 text-blue-700">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-700">{item.improvement}</p>
+                  </div>
+                ))}
+              {(!resultData.analysis || resultData.analysis.length === 0) && (
+                <p className="text-gray-500 col-span-2 p-4 bg-gray-50 rounded-lg">
+                  No analysis results available.
+                </p>
+              )}
+            </div>
 
-          <div className="analysis-results grid md:grid-cols-2 gap-4">
-            {resultData.analysis &&
-              resultData.analysis.map((item, index) => (
-                <div
-                  key={index}
-                  className="analysis-item bg-gray-50 p-4 rounded-lg border border-gray-200"
-                >
-                  <h4 className="font-medium text-lg mb-2 text-blue-700">
-                    {item.title}
-                  </h4>
-                  <p className="text-gray-700">{item.improvement}</p>
-                </div>
-              ))}
-            {(!resultData.analysis || resultData.analysis.length === 0) && (
-              <p className="text-gray-500 col-span-2 p-4 bg-gray-50 rounded-lg">
-                No analysis results available.
-              </p>
-            )}
+            <div className="raw-result mt-6">
+              <details className="bg-gray-100 p-2 rounded-md">
+                <summary className="font-medium cursor-pointer p-2">
+                  View Raw JSON Results
+                </summary>
+                <pre className="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto text-sm mt-2">
+                  {JSON.stringify(resultData, null, 2)}
+                </pre>
+              </details>
+            </div>
+
+            <Button
+              onClick={() => setResultData(null)}
+              className="mt-6"
+              variant="outline"
+            >
+              Analyze Another Resume
+            </Button>
           </div>
-
-          <div className="raw-result mt-6">
-            <details className="bg-gray-100 p-2 rounded-md">
-              <summary className="font-medium cursor-pointer p-2">
-                View Raw JSON Results
-              </summary>
-              <pre className="bg-gray-800 text-gray-200 p-4 rounded-md overflow-x-auto text-sm mt-2">
-                {JSON.stringify(resultData, null, 2)}
-              </pre>
-            </details>
-          </div>
-
-          <Button
-            onClick={() => setResultData(null)}
-            className="mt-6"
-            variant="outline"
-          >
-            Analyze Another Resume
-          </Button>
-        </div>
+        </>
       ) : (
         <section className="md:pt-20 pt-2 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="w-full max-w-[504px] flex flex-col gap-5">

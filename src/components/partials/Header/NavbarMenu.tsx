@@ -8,12 +8,14 @@ interface NavbarMenuProps {
   isMenuOpen: boolean;
   toggleMenu: () => void;
   menuRef: RefObject<HTMLDivElement | null>;
+  children?: React.ReactNode;
 }
 
 const NavbarMenu: React.FC<NavbarMenuProps> = ({
   isMenuOpen,
   toggleMenu,
   menuRef,
+  children,
 }) => {
   const { token } = useSession() as IAuthContext;
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({
             </li>
           ))}
 
-          {token === null && (
+          {token === null ? (
             <Button
               variant="outline"
               size="lg"
@@ -45,6 +47,8 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({
             >
               Analyze a resume
             </Button>
+          ) : (
+            children
           )}
         </ul>
       </div>

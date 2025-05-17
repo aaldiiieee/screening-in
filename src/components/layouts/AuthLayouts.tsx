@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { ToastContainer } from "react-toastify";
 import LogoBrand from "@/assets/images/logo-brand.png";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
@@ -15,6 +16,8 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
           © 2023 Screening In. All rights reserved.
         </p>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };

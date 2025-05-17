@@ -15,8 +15,9 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form";
+
+import { toast } from "react-toastify";
 
 import { useForm } from "react-hook-form";
 import { LoginPayload, RegisterPayload } from "@/types/services";
@@ -55,10 +56,13 @@ const AuthForm = () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onError: (error: any) => {
         if (error.response?.data) {
-          const errorData = error.response.data;
-          alert(errorData.message);
+          const errorMessage = error.response.data.detail;
+          toast.error(errorMessage, {
+            autoClose: 2000,
+            position: "top-right",
+          });
         } else {
-          alert("Terjadi kesalahan saat login");
+          console.error(error);
         }
       },
     });
@@ -73,8 +77,7 @@ const AuthForm = () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onError: (error: any) => {
         if (error.response?.data) {
-          const errorData = error.response.data;
-          alert(errorData.message);
+          // const errorData = error.response.data;
         } else {
           alert("Terjadi kesalahan saat register");
         }
@@ -116,7 +119,6 @@ const AuthForm = () => {
                           {...formLogin.register("email", { required: true })}
                         />
                       </FormControl>
-                      <FormMessage />
                     </FormItem>
                   )}
                 />
@@ -128,7 +130,7 @@ const AuthForm = () => {
                       <FormLabel>Password</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="••••••••"
+                          placeholder="password"
                           {...field}
                           {...formLogin.register("password", {
                             required: true,
