@@ -71,7 +71,7 @@ const AuthForm = () => {
   const onSubmitRegister = (data: RegisterPayload) => {
     registerMutation.mutate(data, {
       onSuccess: () => {
-        window.location.reload();
+        navigate("/authenticate");
       },
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
