@@ -71,7 +71,12 @@ const AuthForm = () => {
   const onSubmitRegister = (data: RegisterPayload) => {
     registerMutation.mutate(data, {
       onSuccess: () => {
-        navigate("/authenticate");
+        toast.success("Register success, please login", {
+          autoClose: 2000,
+          position: "top-right",
+        });
+
+        formRegister.reset();
       },
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
